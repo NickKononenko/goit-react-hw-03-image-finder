@@ -9,6 +9,7 @@ class ImageGalleryItem extends Component {
           src={this.props.smallImage}
           alt=""
           id={this.props.id}
+          onClick={this.props.modalToggle}
         />
       </li>
     );

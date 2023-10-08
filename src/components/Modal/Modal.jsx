@@ -1,11 +1,10 @@
 import { Component } from 'react';
 
 class Modal extends Component {
-  state = {};
   render() {
     return (
-      <div className="overlay">
-        <div className="modal">
+      <div className="Overlay">
+        <div className="Modal">
           <img src="" alt="" />
         </div>
       </div>
