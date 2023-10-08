@@ -6,6 +6,10 @@ class Modal extends Component {
     window.addEventListener('keydown', this.props.onEscape);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.props.onEscape);
+  }
+
   render() {
     return (
       <div className={css.Overlay} onClick={this.props.modalToggle}>
