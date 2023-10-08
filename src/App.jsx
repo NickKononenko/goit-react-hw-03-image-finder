@@ -16,12 +16,24 @@ class App extends Component {
     page: 1,
     totalHits: 1,
     isModalOpen: false,
+    largeImage: '',
   };
 
   modalToggle = () => {
     this.setState(prevState => ({
       isModalOpen: !prevState.isModalOpen,
     }));
+  };
+
+  handleEscape = e => {
+    if (e.key === 'Escape') {
+      this.setState({ isModalOpen: false });
+    }
+  };
+
+  getLargeImage = id => {
+    const clickedImage = this.state.images.find(image => image.id === id);
+    this.setState({ largeImage: clickedImage.largeImageURL });
   };
 
   handleSubmit = query => {
@@ -77,6 +89,7 @@ class App extends Component {
                 key={image.id}
                 smallImage={image.webformatURL}
                 modalToggle={this.modalToggle}
+                giveLargeImage={this.getLargeImage}
               />
             ))}
         </ImageGallery>
@@ -85,7 +98,13 @@ class App extends Component {
           this.state.images.length < this.state.totalHits && (
             <Button onClick={this.loadMore} />
           )}
-        {this.state.isModalOpen && <Modal />}
+        {this.state.isModalOpen && (
+          <Modal
+            largeImage={this.state.largeImage}
+            modalToggle={this.modalToggle}
+            onEscape={this.handleEscape}
+          />
+        )}
       </>
     );
   }

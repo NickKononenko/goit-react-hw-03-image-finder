@@ -1,15 +1,19 @@
 import { Component } from 'react';
+import css from './ImageGalleryItem.module.css';
 
 class ImageGalleryItem extends Component {
   render() {
     return (
-      <li className="ImageGalleryItem" key={this.props.id}>
+      <li className={css.ImageGalleryItem} key={this.props.id}>
         <img
-          className="ImageGalleryItem-image"
+          className={css.ImageGalleryItemImage}
           src={this.props.smallImage}
           alt=""
           id={this.props.id}
-          onClick={this.props.modalToggle}
+          onClick={() => {
+            this.props.modalToggle();
+            this.props.giveLargeImage(this.props.id);
+          }}
         />
       </li>
     );

@@ -1,11 +1,16 @@
 import { Component } from 'react';
+import css from './Modal.module.css';
 
 class Modal extends Component {
+  componentDidMount() {
+    window.addEventListener('keydown', this.props.onEscape);
+  }
+
   render() {
     return (
-      <div className="Overlay">
-        <div className="Modal">
-          <img src="" alt="" />
+      <div className={css.Overlay} onClick={this.props.modalToggle}>
+        <div className={css.Modal}>
+          <img src={this.props.largeImage} alt="" />
         </div>
       </div>
     );
@@ -13,6 +18,3 @@ class Modal extends Component {
 }
 
 export default Modal;
-
-// 1. Додати onClick на image в ImageGalleryItem
-// 2. По кліку має передаватись пропсом в модуль велике зображення і має викликатись саме модальне вікно

@@ -1,8 +1,9 @@
 import { Component } from 'react';
+import css from './ImageGallery.module.css';
 
 class ImageGallery extends Component {
   render() {
-    return <ul className="ImageGallery">{this.props.children}</ul>;
+    return <ul className={css.ImageGallery}>{this.props.children}</ul>;
   }
 }
 
